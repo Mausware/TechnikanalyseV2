@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Configuration Table Analyse" max_length="40" name="x_178023_technikv2_configuration_table_analyse" type="collection"/>
+</database>
