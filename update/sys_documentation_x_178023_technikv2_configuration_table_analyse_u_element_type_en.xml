@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="u_element_type" label="Element Type" language="en" table="x_178023_technikv2_configuration_table_analyse">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_element_type</element>
+            <help/>
+            <hint/>
+            <label>Element Type</label>
+            <language>en</language>
+            <name>x_178023_technikv2_configuration_table_analyse</name>
+            <plural>Element Types</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 12:01:26</sys_created_on>
+            <sys_id>c563b0da4f821300b1350fbf9310c780</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Element Type</sys_name>
+            <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
+            <sys_update_name>sys_documentation_x_178023_technikv2_configuration_table_analyse_u_element_type_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 12:01:26</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

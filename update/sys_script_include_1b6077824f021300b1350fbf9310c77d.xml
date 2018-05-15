@@ -104,8 +104,56 @@ TableAnalyseUtils.prototype = {
 
 	},
 
+	getScriptsRunningOnTable : function(tablename){
+
+		var config = new GlideRecord('x_178023_technikv2_configuration_table_analyse');
+		config.query();
+
+		while(config.next()){
+			var tableToAnalyze = config.u_table_to_analyze;
+			var namefield = config.u_namefield;
+			var tablefield = config.u_tablefield;
+			var elementType = config.u_element_type;
+			var urlBase = config.u_url_base;
+
+
+
+
+			var scripts = new GlideRecord(tableToAnalyze);
+			scripts.query();
+
+			while(scripts.next()){
+
+				if(scripts.getValue(tablefield) == tablename){
+
+					var results = new GlideRecord('x_178023_technikv2_result');
+					results.addQuery('u_element_sys_id', scripts.sys_id);
+					results.addQuery('u_element_type', elementType);
+					results.query();
+
+					if(results.next()){
+
+						results.u_link_to_element = urlBase + scripts.sys_id;
+						results.u_element_name = scripts.getValue(namefield);
+						results.update();
+
+					}else{
+						results.initialize();
+						results.u_element_sys_id = scripts.sys_id;
+						results.u_element_type = elementType;
+						results.u_link_to_element = urlBase + scripts.sys_id;
+						results.u_element_name = scripts.getValue(namefield);
+						results.insert();
+					}
+
+				}
+			}
+		}
+
+	},
+
 	getScriptsWithGlideRecordRef : function(tablename){
-		//returns all Client Scripts that use a GlideRecord directly (without dotwalks) on the table specified in parameter tablename
+		//
 		var config = new GlideRecord('x_178023_technikv2_configuration_gliderecord_analyse');
 		config.query();
 
@@ -128,14 +176,14 @@ TableAnalyseUtils.prototype = {
 				var scriptName = scripts.getValue(namefield);//.toString();
 
 				if(scriptCode){
-					
+
 
 					//gs.info('scriptName='+scriptName+'\ntypeof script='+typeof scriptCode+'\nscriptCode='+scriptCode+'\n\n');
 
 
 
 					if( scriptCode.includes(grTablename1) || scriptCode.includes(grTablename2) ){
-						//gs.info("Pushing Script -" + scripts.name.toString() + "- because it belongs to Table: " + scripts.table.toString());
+
 						var results = new GlideRecord('x_178023_technikv2_result');
 						results.addQuery('u_element_sys_id', scripts.sys_id);
 						results.addQuery('u_element_type', elementType);
@@ -326,13 +374,13 @@ TableAnalyseUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-05-15 07:09:27</sys_created_on>
         <sys_id>1b6077824f021300b1350fbf9310c77d</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>TableAnalyseUtils</sys_name>
         <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
         <sys_update_name>sys_script_include_1b6077824f021300b1350fbf9310c77d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-15 11:19:16</sys_updated_on>
+        <sys_updated_on>2018-05-15 12:15:37</sys_updated_on>
     </sys_script_include>
 </record_update>
