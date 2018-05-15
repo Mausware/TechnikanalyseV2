@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="u_element_type" table="x_178023_technikv2_result" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Table Reference</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:26:46</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c5d75e4a4ff11300b1350fbf9310c74c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:26:46</sys_updated_on>
+            <value>10</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Client Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:27:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fa08da4a4ff11300b1350fbf9310c7ac</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:28:27</sys_updated_on>
+            <value>20</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord Client Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:03:32</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0a68d4da4f421300b1350fbf9310c745</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:03:32</sys_updated_on>
+            <value>21</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate Client Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:03:43</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7078189a4f421300b1350fbf9310c70d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:03:43</sys_updated_on>
+            <value>22</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dotwalk Client Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:03:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a37854da4f421300b1350fbf9310c7de</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:03:55</sys_updated_on>
+            <value>23</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Business Rule</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:27:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d118564a4ff11300b1350fbf9310c78e</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:28:24</sys_updated_on>
+            <value>30</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord Business Rule</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:04:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a398dcda4f421300b1350fbf9310c7ce</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:04:28</sys_updated_on>
+            <value>31</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate Business Rule</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:04:36</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>25a89cda4f421300b1350fbf9310c73e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:04:36</sys_updated_on>
+            <value>32</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dotwalk Business Rule</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:04:45</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>3ba8501e4f421300b1350fbf9310c7b6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:04:45</sys_updated_on>
+            <value>33</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Scheduled Job</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:27:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7528de4a4ff11300b1350fbf9310c760</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:28:30</sys_updated_on>
+            <value>40</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord Scheduled Job</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:05:08</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>21c8501e4f421300b1350fbf9310c750</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:05:08</sys_updated_on>
+            <value>41</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate Scheduled Job</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:05:18</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f7c8501e4f421300b1350fbf9310c755</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:05:18</sys_updated_on>
+            <value>42</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dotwalk Scheduled Job</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:05:30</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f2d8d01e4f421300b1350fbf9310c7ee</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:05:30</sys_updated_on>
+            <value>43</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Script Include</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:27:39</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9838128a4ff11300b1350fbf9310c7d4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:27:39</sys_updated_on>
+            <value>50</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord Script Include</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:06:48</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>3129901e4f421300b1350fbf9310c711</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:06:48</sys_updated_on>
+            <value>51</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate Script Include</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:06:56</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7729941e4f421300b1350fbf9310c75d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:06:56</sys_updated_on>
+            <value>52</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dotwalk Script Include</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:07:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4639149a4f421300b1350fbf9310c733</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:07:05</sys_updated_on>
+            <value>53</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>UI Action</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:27:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0448528a4ff11300b1350fbf9310c78f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:27:55</sys_updated_on>
+            <value>60</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord UI Action</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:07:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ef49d41e4f421300b1350fbf9310c7ad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:07:28</sys_updated_on>
+            <value>61</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate UI Action</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:07:35</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9159d41e4f421300b1350fbf9310c7b4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:07:35</sys_updated_on>
+            <value>62</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dotwalk UI Action</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:07:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4b59181e4f421300b1350fbf9310c768</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:07:42</sys_updated_on>
+            <value>63</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>UI Policy</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:28:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>dc585a4a4ff11300b1350fbf9310c756</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:28:12</sys_updated_on>
+            <value>70</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord UI Policy</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:08:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f769d41e4f421300b1350fbf9310c712</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:08:02</sys_updated_on>
+            <value>71</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate UI Policy</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:08:10</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>3179581e4f421300b1350fbf9310c76e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:08:10</sys_updated_on>
+            <value>72</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dotwalk UI Policy</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:08:22</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f089d01e4f421300b1350fbf9310c7f7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:08:22</sys_updated_on>
+            <value>73</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Workflow</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 09:20:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ca7ecc164f421300b1350fbf9310c73d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 09:20:07</sys_updated_on>
+            <value>80</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord Workflow Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:08:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>19a9d81e4f421300b1350fbf9310c745</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:08:57</sys_updated_on>
+            <value>81</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate Workflow Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:09:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>63a9181e4f421300b1350fbf9310c7ac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:09:07</sys_updated_on>
+            <value>82</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dotwalk Workflow Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:09:17</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>56b9d41e4f421300b1350fbf9310c71d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:09:17</sys_updated_on>
+            <value>83</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>u_element_type</element>
+            <name>x_178023_technikv2_result</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 14:26:46</sys_created_on>
+            <sys_id>93f7da4a4ff11300b1350fbf9310c7aa</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>u_element_type</sys_name>
+            <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
+            <sys_update_name>sys_choice_x_178023_technikv2_result_u_element_type</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 14:26:46</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

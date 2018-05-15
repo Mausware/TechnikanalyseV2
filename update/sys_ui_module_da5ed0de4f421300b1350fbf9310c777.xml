@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Configuration">1a5ed0de4f421300b1350fbf9310c775</application>
+        <filter/>
+        <name>Configuration GlideRecord Analyses</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_178023_technikv2.configuration_gliderecord_analyse_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-15 10:29:30</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>da5ed0de4f421300b1350fbf9310c777</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Configuration GlideRecord Analyses</sys_name>
+        <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
+        <sys_update_name>sys_ui_module_da5ed0de4f421300b1350fbf9310c777</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-15 10:29:30</sys_updated_on>
+        <table>x_178023_technikv2_configuration_gliderecord_analyse</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+</record_update>

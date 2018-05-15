@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="u_url_base" label="URL Base" language="en" table="x_178023_technikv2_configuration_gliderecord_analyse">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_url_base</element>
+            <help/>
+            <hint/>
+            <label>URL Base</label>
+            <language>en</language>
+            <name>x_178023_technikv2_configuration_gliderecord_analyse</name>
+            <plural>URL Bases</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-15 10:36:14</sys_created_on>
+            <sys_id>c5ef50124f821300b1350fbf9310c7f5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>URL Base</sys_name>
+            <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
+            <sys_update_name>sys_documentation_x_178023_technikv2_configuration_gliderecord_analyse_u_url_base_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-15 10:36:14</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

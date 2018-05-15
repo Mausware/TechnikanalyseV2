@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_178023_technikv2.TableAnalyseUtils</api_name>
+        <client_callable>false</client_callable>
+        <description>Utils for analyzing the references of Tables</description>
+        <name>TableAnalyseUtils</name>
+        <script><![CDATA[var TableAnalyseUtils = Class.create();
+TableAnalyseUtils.prototype = {
+	initialize: function() {
+	},
+
+	getReferencingTables: function(tablename){
+		//writes all Tables that have a reference for the table specified in parameter tablename into the 'x_178023_technikv2_result' table
+
+
+		referencingTablesArr = [];
+		var tables = new GlideRecord('sys_db_object');
+		tables.query();
+
+		//gs.info('Number of Records in sys_db_object: ' + tables.getRowCount());
+
+		while(tables.next()){
+
+			table2scan = tables.name.toString();
+
+			var gr = new GlideRecord('sys_dictionary');
+			gr.addQuery('name', table2scan);
+			gr.addQuery('internal_type', 'reference');
+			gr.query();
+
+			if(gr.getRowCount() != 0){
+				//gs.info('Number of Rercords with type=reference in table ' + table2scan + ': ' + gr.getRowCount());
+
+				while(gr.next()){
+
+					referencedTable = gr.reference;
+
+					//Ist der Name der referenzierten Tabelle gleich dem Namen unserer zu untersuchenden Tabelle?
+					if(tablename == referencedTable){
+						var results = new GlideRecord('x_178023_technikv2_result');
+						results.addQuery('u_element_sys_id', gr.sys_id);
+						results.addQuery('u_element_type', 10);
+						results.query();
+
+						if(results.next()){
+							//update record (useful??)
+							results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
+							results.u_element_name = table2scan;
+							results.update();
+						}else{
+							results.initialize();
+							results.u_element_sys_id = gr.sys_id;
+							results.u_element_type = 10;
+							results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
+							results.u_element_name = table2scan;
+							results.insert();
+						}
+					}
+				}
+			}
+		}
+	},
+
+	getClientScriptsRunningOnTable : function(tablename){
+		//writes all Client Scripts that are running on the table specified in parameter tablename into the 'x_178023_technikv2_result' table
+
+		var arr = [];
+
+		var scripts = new GlideRecord('sys_script_client');
+		scripts.query();
+
+		//gs.info("Number of Records: " + scripts.getRowCount());
+
+		while(scripts.next()){
+
+			if(scripts.table.toString() == tablename){
+
+				var results = new GlideRecord('x_178023_technikv2_result');
+				results.addQuery('u_element_sys_id', scripts.sys_id);
+				results.addQuery('u_element_type', 20);
+				results.query();
+
+				if(results.next()){
+
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_script_client.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.name;
+					results.update();
+
+				}else{
+					results.initialize();
+					results.u_element_sys_id = scripts.sys_id;
+					results.u_element_type = 20;
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_script_client.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.name;
+					results.insert();
+				}
+
+			}
+
+		}
+
+	},
+
+	getScriptsWithGlideRecordRef : function(tablename){
+		//returns all Client Scripts that use a GlideRecord directly (without dotwalks) on the table specified in parameter tablename
+		var config = new GlideRecord('x_178023_technikv2_configuration_gliderecord_analyse');
+		config.query();
+
+		while(config.next()){
+			var tableToAnalyze = config.u_table_to_analyze;
+			var namefield = config.u_namefield;
+			var scriptfield = config.u_scriptfield;
+			var elementType = config.u_element_type;
+			var urlBase = config.u_url_base;
+
+			var scripts = new GlideRecord(tableToAnalyze);
+			scripts.query();
+
+			var grTablename1 = "GlideRecord(\'"+tablename+"\')";
+			var grTablename2 = "GlideRecord(\""+tablename+"\")";
+
+
+			while(scripts.next()){
+				var scriptCode = scripts.getValue(scriptfield);//.toString();
+				var scriptName = scripts.getValue(namefield);//.toString();
+
+				if(scriptCode){
+					
+
+					//gs.info('scriptName='+scriptName+'\ntypeof script='+typeof scriptCode+'\nscriptCode='+scriptCode+'\n\n');
+
+
+
+					if( scriptCode.includes(grTablename1) || scriptCode.includes(grTablename2) ){
+						//gs.info("Pushing Script -" + scripts.name.toString() + "- because it belongs to Table: " + scripts.table.toString());
+						var results = new GlideRecord('x_178023_technikv2_result');
+						results.addQuery('u_element_sys_id', scripts.sys_id);
+						results.addQuery('u_element_type', elementType);
+						results.query();
+
+						if(results.next()){
+							results.u_link_to_element = urlBase + scripts.sys_id;
+							results.u_element_name = scriptName;
+							results.update();
+
+						}else{
+							results.initialize();
+							results.u_element_sys_id = scripts.sys_id;
+							results.u_element_type = elementType;
+							results.u_link_to_element = urlBase + scripts.sys_id;
+							results.u_element_name = scriptName;
+							results.insert();
+						}
+
+
+					}
+				}
+			}
+		}
+
+
+	},
+
+	getBusinessRulesRunningOnTable : function(tablename){
+		//writes all Business Rules that are running on the table specified in parameter tablename into the 'x_178023_technikv2_result' table
+
+
+		var scripts = new GlideRecord('sys_script');
+		scripts.query();
+
+		//gs.info("Number of Records: " + scripts.getRowCount());
+
+		while(scripts.next()){
+
+			if(scripts.collection.toString() == tablename){
+
+				var results = new GlideRecord('x_178023_technikv2_result');
+				results.addQuery('u_element_sys_id', scripts.sys_id);
+				results.addQuery('u_element_type', 30);
+				results.query();
+
+				if(results.next()){
+
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_script.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.name;
+					results.update();
+
+				}else{
+					results.initialize();
+					results.u_element_sys_id = scripts.sys_id;
+					results.u_element_type = 30;
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_script.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.name;
+					results.insert();
+				}
+
+			}
+
+		}
+
+	},
+
+	getUIActionsRunningOnTable : function(tablename){
+		//writes all Business Rules that are running on the table specified in parameter tablename into the 'x_178023_technikv2_result' table
+
+
+		var scripts = new GlideRecord('sys_ui_action');
+		scripts.query();
+
+		//gs.info("Number of Records: " + scripts.getRowCount());
+
+		while(scripts.next()){
+
+			if(scripts.table.toString() == tablename){
+
+				var results = new GlideRecord('x_178023_technikv2_result');
+				results.addQuery('u_element_sys_id', scripts.sys_id);
+				results.addQuery('u_element_type', 60);
+				results.query();
+
+				if(results.next()){
+
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_ui_action.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.name;
+					results.update();
+
+				}else{
+					results.initialize();
+					results.u_element_sys_id = scripts.sys_id;
+					results.u_element_type = 60;
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_ui_action.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.name;
+					results.insert();
+				}
+
+			}
+
+		}
+
+	},
+
+	getUIPoliciesRunningOnTable : function(tablename){
+		//writes all Business Rules that are running on the table specified in parameter tablename into the 'x_178023_technikv2_result' table
+
+
+		var scripts = new GlideRecord('sys_ui_policy');
+		scripts.query();
+
+		//gs.info("Number of Records: " + scripts.getRowCount());
+
+		while(scripts.next()){
+
+			if(scripts.table.toString() == tablename){
+
+				var results = new GlideRecord('x_178023_technikv2_result');
+				results.addQuery('u_element_sys_id', scripts.sys_id);
+				results.addQuery('u_element_type', 70);
+				results.query();
+
+				if(results.next()){
+
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_ui_policy.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.short_description;
+					results.update();
+
+				}else{
+					results.initialize();
+					results.u_element_sys_id = scripts.sys_id;
+					results.u_element_type = 70;
+					results.u_link_to_element = '/nav_to.do?uri=%2Fsys_ui_policy.do%3Fsys_id%3D' + scripts.sys_id;
+					results.u_element_name = scripts.short_description;
+					results.insert();
+				}
+
+			}
+
+		}
+
+	},
+
+	getWorkflowsRunningOnTable : function(tablename){
+		//writes all Workflows that are running on the table specified in parameter tablename into the 'x_178023_technikv2_result' table
+
+
+		var flows = new GlideRecord('wf_workflow_version');
+		flows.query();
+
+		//gs.info("Number of Records: " + scripts.getRowCount());
+
+		while(flows.next()){
+
+			if(flows.table.toString() == tablename){
+
+				var results = new GlideRecord('x_178023_technikv2_result');
+				results.addQuery('u_element_sys_id', flows.sys_id);
+				results.addQuery('u_element_type', 80);
+				results.query();
+
+				if(results.next()){
+
+					results.u_link_to_element = '/nav_to.do?uri=%2Fwf_workflow.do%3Fsys_id%3D' + flows.workflow.sys_id;
+					results.u_element_name = flows.workflow.name;
+					results.update();
+
+				}else{
+					results.initialize();
+					results.u_element_sys_id = flows.workflow.sys_id;
+					results.u_element_type = 80;
+					results.u_link_to_element = '/nav_to.do?uri=%2Fwf_workflow.do%3Fsys_id%3D' + flows.workflow.sys_id;
+					results.u_element_name = flows.workflow.name;
+					results.insert();
+				}
+
+			}
+
+		}
+
+	},
+
+	type: 'TableAnalyseUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-15 07:09:27</sys_created_on>
+        <sys_id>1b6077824f021300b1350fbf9310c77d</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>TableAnalyseUtils</sys_name>
+        <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
+        <sys_update_name>sys_script_include_1b6077824f021300b1350fbf9310c77d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-15 11:19:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="x_178023_technikv2_result" label="Table Reference" max_length="40" name="x_178023_technikv2_table_reference" type="collection">
+        <element label="Table" max_length="32" name="u_table" reference="sys_db_object" type="reference"/>
+        <index name="index">
+            <element name="u_table"/>
+        </index>
+    </element>
+</database>
