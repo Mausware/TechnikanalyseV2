@@ -63,6 +63,7 @@
                 <element label="GlideRecord Validation Script" value="161"/>
                 <element label="GlideRecord Workflow Script" value="81"/>
                 <element label="Referenced by Table" value="10"/>
+                <element label="Referencing Table" value="170"/>
                 <element label="Scheduled Job" value="40"/>
                 <element label="Script Action" value="100"/>
                 <element label="Script Include" value="50"/>
