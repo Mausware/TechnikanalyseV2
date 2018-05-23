@@ -36,7 +36,7 @@ TableAnalyseUtils.prototype = {
 		//writes all Tables that have a reference for the table specified in parameter tablename into the 'x_178023_technikv2_result' table
 		
 		//ToDo: config table verwenden
-
+		var activeChoice = 20; //unknown
 
 		//Nimm alle Tabellen...
 		var tables = new GlideRecord('sys_db_object');
@@ -63,6 +63,13 @@ TableAnalyseUtils.prototype = {
 
 					//Ist der Name der referenzierten Tabelle gleich dem Namen unserer zu untersuchenden Tabelle?...
 					if(tablename == referencedTable){
+						
+						if(gr.active == true){
+							activeChoice = 10; //true
+						}else{
+							activeChoice = 20; //false
+						}
+						
 						//...dann prüfe ob es schon einen result record gibt
 						var results = new GlideRecord('x_178023_technikv2_result');
 						results.addQuery('u_element_sys_id', gr.sys_id);
@@ -73,6 +80,7 @@ TableAnalyseUtils.prototype = {
 							//update record (useful??)
 							results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
 							results.u_element_name = table2scan;
+							results.u_element_active = activeChoice;
 							results.update();
 						}else{
 							//insert new record
@@ -81,6 +89,7 @@ TableAnalyseUtils.prototype = {
 							results.u_element_type = 10;
 							results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
 							results.u_element_name = table2scan;
+							results.u_element_active = activeChoice;
 							results.insert();
 						}
 					}
@@ -110,6 +119,14 @@ TableAnalyseUtils.prototype = {
 			while(scripts.next()){
 
 				if(scripts.getValue(tablefield) == tablename){
+					
+					var activeFlag = scripts.getValue(namefield);
+					var activeChoice = 20; //unknown
+					if(activeFlag == true){
+						activeChoice = 10; //true
+					}else{
+						activeChoice = 30; //false
+					}
 
 					var results = new GlideRecord('x_178023_technikv2_result');
 					results.addQuery('u_element_sys_id', scripts.sys_id);
@@ -120,6 +137,7 @@ TableAnalyseUtils.prototype = {
 
 						results.u_link_to_element = urlBase + scripts.sys_id;
 						results.u_element_name = scripts.getValue(namefield);
+						results.u_element_active = activeChoice;
 						results.update();
 
 					}else{
@@ -128,6 +146,7 @@ TableAnalyseUtils.prototype = {
 						results.u_element_type = elementType;
 						results.u_link_to_element = urlBase + scripts.sys_id;
 						results.u_element_name = scripts.getValue(namefield);
+						results.u_element_active = activeChoice;
 						results.insert();
 					}
 
@@ -138,6 +157,8 @@ TableAnalyseUtils.prototype = {
 	},
 
 	getScriptsWithGlideRecordRef : function(tablename){
+		var scriptActiveBool;
+		var scriptActiveChoice;
 		//
 		var config = new GlideRecord('x_178023_technikv2_configuration_gliderecord_analyse');
 		config.query();
@@ -151,6 +172,9 @@ TableAnalyseUtils.prototype = {
 			var encodedQuery = config.u_encoded_query;
 
 			var analyzeType = parseInt(elementType) % 10;
+			
+			var hasActiveField = !config.u_activefield.nil();
+			var activeField = config.u_activefield;
 
 			//gs.info('elementType='+elementType + ', analyzeType='+analyzeType);
 
@@ -177,6 +201,22 @@ TableAnalyseUtils.prototype = {
 			while(scripts.next()){
 				var scriptCode = scripts.getValue(scriptfield);//.toString();
 				var scriptName = scripts.getValue(namefield);//.toString();
+				
+				
+				if(hasActiveField){
+					scriptActiveBool = scripts.getValue(activeField);
+					if(scriptActiveBool == true){
+						scriptActiveChoice = 10; //true
+					}else{
+						scriptActiveChoice = 30; //false
+					}
+				}else{
+					scriptActiveChoice = 20; //unknown
+				}
+				
+				//gs.info('scriptActiveChoice = ' + scriptActiveChoice);
+				
+				
 
 				if(scriptCode){
 
@@ -195,6 +235,7 @@ TableAnalyseUtils.prototype = {
 						if(results.next()){
 							results.u_link_to_element = urlBase + scripts.sys_id;
 							results.u_element_name = scriptName;
+							results.u_element_active = scriptActiveChoice;
 							results.update();
 
 						}else{
@@ -203,6 +244,7 @@ TableAnalyseUtils.prototype = {
 							results.u_element_type = elementType;
 							results.u_link_to_element = urlBase + scripts.sys_id;
 							results.u_element_name = scriptName;
+							results.u_element_active = scriptActiveChoice;
 							results.insert();
 						}
 
@@ -260,13 +302,13 @@ TableAnalyseUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-05-15 07:09:27</sys_created_on>
         <sys_id>1b6077824f021300b1350fbf9310c77d</sys_id>
-        <sys_mod_count>36</sys_mod_count>
+        <sys_mod_count>46</sys_mod_count>
         <sys_name>TableAnalyseUtils</sys_name>
         <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
         <sys_update_name>sys_script_include_1b6077824f021300b1350fbf9310c77d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-23 09:14:28</sys_updated_on>
+        <sys_updated_on>2018-05-23 12:25:15</sys_updated_on>
     </sys_script_include>
 </record_update>

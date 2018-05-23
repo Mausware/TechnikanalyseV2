@@ -2,6 +2,13 @@
 <database>
     <element label="Result" max_length="40" name="x_178023_technikv2_result" type="collection">
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element choice="1" label="Element Active" max_length="40" name="u_element_active" type="choice">
+            <choice>
+                <element hint="Element is inactive" value="30"/>
+                <element hint="Element is active" label="true" value="10"/>
+                <element hint="Element has no activity status" label="unknown" value="20"/>
+            </choice>
+        </element>
         <element display="true" label="Element Name" max_length="256" name="u_element_name" type="string"/>
         <element label="Element sys_id" max_length="32" name="u_element_sys_id" type="string"/>
         <element choice="1" label="Element Type" mandatory="true" max_length="40" name="u_element_type" type="choice">
