@@ -5,13 +5,13 @@
             <element>u_rulename</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2018-05-15 10:37:07</sys_created_on>
-            <sys_id>ca10a8124f821300b1350fbf9310c799</sys_id>
+            <sys_created_on>2018-05-23 07:57:18</sys_created_on>
+            <sys_id>f63801784f121300b1350fbf9310c766</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-15 10:37:07</sys_updated_on>
+            <sys_updated_on>2018-05-23 07:57:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,13 +19,13 @@
             <element>u_table_to_analyze</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2018-05-15 10:37:07</sys_created_on>
-            <sys_id>4e10a8124f821300b1350fbf9310c799</sys_id>
+            <sys_created_on>2018-05-23 07:57:18</sys_created_on>
+            <sys_id>7a3801784f121300b1350fbf9310c766</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-15 10:37:07</sys_updated_on>
+            <sys_updated_on>2018-05-23 07:57:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -33,41 +33,41 @@
             <element>u_scriptfield</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2018-05-15 10:37:07</sys_created_on>
-            <sys_id>ce10a8124f821300b1350fbf9310c799</sys_id>
+            <sys_created_on>2018-05-23 07:57:18</sys_created_on>
+            <sys_id>fa3801784f121300b1350fbf9310c766</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-15 10:37:07</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>u_element_type</element>
-            <position>3</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2018-05-15 10:37:07</sys_created_on>
-            <sys_id>4210a8124f821300b1350fbf9310c79a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-15 10:37:07</sys_updated_on>
+            <sys_updated_on>2018-05-23 07:57:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_namefield</element>
-            <position>4</position>
+            <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2018-05-15 10:37:07</sys_created_on>
-            <sys_id>c210a8124f821300b1350fbf9310c79a</sys_id>
+            <sys_created_on>2018-05-23 07:57:18</sys_created_on>
+            <sys_id>7e3801784f121300b1350fbf9310c766</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-15 10:37:07</sys_updated_on>
+            <sys_updated_on>2018-05-23 07:57:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_element_type</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-23 07:57:18</sys_created_on>
+            <sys_id>fe3801784f121300b1350fbf9310c766</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-23 07:57:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -75,13 +75,41 @@
             <element>u_url_base</element>
             <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2018-05-15 10:37:07</sys_created_on>
-            <sys_id>4610a8124f821300b1350fbf9310c79a</sys_id>
+            <sys_created_on>2018-05-23 07:57:18</sys_created_on>
+            <sys_id>723801784f121300b1350fbf9310c767</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-15 10:37:07</sys_updated_on>
+            <sys_updated_on>2018-05-23 07:57:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_encoded_query</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-23 07:57:18</sys_created_on>
+            <sys_id>f23801784f121300b1350fbf9310c767</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-23 07:57:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_activefield</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-23 10:45:12</sys_created_on>
+            <sys_id>56ae65744f921300b1350fbf9310c7d3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_178023_technikv2_configuration_gliderecord_analyse" sys_domain="global" view="Default view">8e10a8124f821300b1350fbf9310c793</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-23 10:45:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

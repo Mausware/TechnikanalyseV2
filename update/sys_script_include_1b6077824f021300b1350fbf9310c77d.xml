@@ -11,12 +11,34 @@
 TableAnalyseUtils.prototype = {
 	initialize: function() {
 	},
+	
+	clearResultTable: function(){
+		var grResult = new GlideRecord('x_178023_technikv2_result');
+		grResult.query();
+		grResult.deleteMultiple();
+	},
+	
+	run: function(tablename){
+		
+		this.clearResultTable();
+		
+		this.getReferencingTables(tablename);
+		this.getScriptsWithGlideRecordRef(tablename);
+		this.getScriptsRunningOnTable(tablename);
+		
+		/*new x_178023_technikv2.TableAnalyseUtils().getReferencingTables(tablename);
+		new x_178023_technikv2.TableAnalyseUtils().getScriptsWithGlideRecordRef(tablename);
+		new x_178023_technikv2.TableAnalyseUtils().getScriptsRunningOnTable(tablename);
+		*/
+	},
 
 	getReferencingTables: function(tablename){
 		//writes all Tables that have a reference for the table specified in parameter tablename into the 'x_178023_technikv2_result' table
+		
+		//ToDo: config table verwenden
 
 
-		referencingTablesArr = [];
+		//Nimm alle Tabellen...
 		var tables = new GlideRecord('sys_db_object');
 		tables.query();
 
@@ -25,21 +47,23 @@ TableAnalyseUtils.prototype = {
 		while(tables.next()){
 
 			table2scan = tables.name.toString();
-
+			//Hole dir für jede der Tabellen alle Spalten der Tabelle mit type = reference
 			var gr = new GlideRecord('sys_dictionary');
 			gr.addQuery('name', table2scan);
 			gr.addQuery('internal_type', 'reference');
 			gr.query();
 
+			
 			if(gr.getRowCount() != 0){
 				//gs.info('Number of Rercords with type=reference in table ' + table2scan + ': ' + gr.getRowCount());
 
+				//Untersuche alle reference Spalten der aktuellen Tabelle
 				while(gr.next()){
-
 					referencedTable = gr.reference;
 
-					//Ist der Name der referenzierten Tabelle gleich dem Namen unserer zu untersuchenden Tabelle?
+					//Ist der Name der referenzierten Tabelle gleich dem Namen unserer zu untersuchenden Tabelle?...
 					if(tablename == referencedTable){
+						//...dann prüfe ob es schon einen result record gibt
 						var results = new GlideRecord('x_178023_technikv2_result');
 						results.addQuery('u_element_sys_id', gr.sys_id);
 						results.addQuery('u_element_type', 10);
@@ -51,6 +75,7 @@ TableAnalyseUtils.prototype = {
 							results.u_element_name = table2scan;
 							results.update();
 						}else{
+							//insert new record
 							results.initialize();
 							results.u_element_sys_id = gr.sys_id;
 							results.u_element_type = 10;
@@ -123,12 +148,30 @@ TableAnalyseUtils.prototype = {
 			var scriptfield = config.u_scriptfield;
 			var elementType = config.u_element_type;
 			var urlBase = config.u_url_base;
+			var encodedQuery = config.u_encoded_query;
+
+			var analyzeType = parseInt(elementType) % 10;
+
+			//gs.info('elementType='+elementType + ', analyzeType='+analyzeType);
 
 			var scripts = new GlideRecord(tableToAnalyze);
+			scripts.addEncodedQuery(encodedQuery);
 			scripts.query();
+			
+			var grTablename1;
+			var grTablename2;
 
-			var grTablename1 = "GlideRecord(\'"+tablename+"\')";
-			var grTablename2 = "GlideRecord(\""+tablename+"\")";
+			if(analyzeType == 1){
+				//Analyse nach GlideRecord
+				grTablename1 = "GlideRecord(\'"+tablename+"\')";
+				grTablename2 = "GlideRecord(\""+tablename+"\")";
+
+			}else if(analyzeType == 2){
+				//Analyse GlideAggregate
+				grTablename1 = "GlideAggregate(\'"+tablename+"\')";
+				grTablename2 = "GlideAggregate(\""+tablename+"\")";
+			}
+
 
 
 			while(scripts.next()){
@@ -217,13 +260,13 @@ TableAnalyseUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-05-15 07:09:27</sys_created_on>
         <sys_id>1b6077824f021300b1350fbf9310c77d</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>36</sys_mod_count>
         <sys_name>TableAnalyseUtils</sys_name>
         <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
         <sys_update_name>sys_script_include_1b6077824f021300b1350fbf9310c77d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-15 12:31:58</sys_updated_on>
+        <sys_updated_on>2018-05-23 09:14:28</sys_updated_on>
     </sys_script_include>
 </record_update>

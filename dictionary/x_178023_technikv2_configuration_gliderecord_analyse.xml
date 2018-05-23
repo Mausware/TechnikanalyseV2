@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Configuration GlideRecord Analyse" max_length="40" name="x_178023_technikv2_configuration_gliderecord_analyse" type="collection">
+        <element default="none" dependent="u_table_to_analyze" dependent_on_field="u_table_to_analyze" label="Activefield" max_length="80" name="u_activefield" type="field_name" use_dependent_field="true"/>
         <element label="Element Type" max_length="40" name="u_element_type" type="integer"/>
+        <element label="Encoded Query" max_length="2048" name="u_encoded_query" type="string"/>
         <element dependent="u_table_to_analyze" dependent_on_field="u_table_to_analyze" label="Namefield" max_length="80" name="u_namefield" type="field_name" use_dependent_field="true"/>
         <element display="true" label="Rulename" max_length="128" name="u_rulename" type="string"/>
         <element dependent="u_table_to_analyze" dependent_on_field="u_table_to_analyze" label="Scriptfield" max_length="80" name="u_scriptfield" type="field_name" use_dependent_field="true"/>

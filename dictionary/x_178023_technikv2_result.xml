@@ -6,34 +6,66 @@
         <element label="Element sys_id" max_length="32" name="u_element_sys_id" type="string"/>
         <element choice="1" label="Element Type" mandatory="true" max_length="40" name="u_element_type" type="choice">
             <choice>
+                <element label="Access Control (ACL)" value="90"/>
                 <element label="Business Rule" value="30"/>
                 <element label="Client Script" value="20"/>
+                <element label="Dotwalk Access Control (ACL)" value="93"/>
                 <element label="Dotwalk Business Rule" value="33"/>
                 <element label="Dotwalk Client Script" value="23"/>
                 <element label="Dotwalk Scheduled Job" value="43"/>
+                <element label="Dotwalk Script Action" value="103"/>
                 <element label="Dotwalk Script Include" value="53"/>
+                <element label="Dotwalk Transform Map" value="113"/>
                 <element label="Dotwalk UI Action" value="63"/>
+                <element label="Dotwalk UI Context Menu" value="123"/>
+                <element label="Dotwalk UI Macro" value="133"/>
+                <element label="Dotwalk UI Page" value="143"/>
                 <element label="Dotwalk UI Policy" value="73"/>
+                <element label="Dotwalk UI Script" value="153"/>
+                <element label="Dotwalk Validation Script" value="163"/>
                 <element label="Dotwalk Workflow Script" value="83"/>
+                <element label="Extending Table" value="14"/>
+                <element label="GlideAggregate Access Control (ACL)" value="92"/>
                 <element label="GlideAggregate Business Rule" value="32"/>
                 <element label="GlideAggregate Client Script" value="22"/>
                 <element label="GlideAggregate Scheduled Job" value="42"/>
+                <element label="GlideAggregate Script Action" value="102"/>
                 <element label="GlideAggregate Script Include" value="52"/>
+                <element label="GlideAggregate Transform Map" value="112"/>
                 <element label="GlideAggregate UI Action" value="62"/>
+                <element label="GlideAggregate UI Context Menu" value="122"/>
+                <element label="GlideAggregate UI Macro" value="132"/>
+                <element label="GlideAggregate UI Page" value="142"/>
                 <element label="GlideAggregate UI Policy" value="72"/>
+                <element label="GlideAggregate UI Script" value="152"/>
+                <element label="GlideAggregate Validation Script" value="162"/>
                 <element label="GlideAggregate Workflow Script" value="82"/>
+                <element label="GlideRecord Access Control (ACL)" value="91"/>
                 <element label="GlideRecord Business Rule" value="31"/>
                 <element label="GlideRecord Client Script" value="21"/>
                 <element label="GlideRecord Scheduled Job" value="41"/>
+                <element label="GlideRecord Script Action" value="101"/>
                 <element label="GlideRecord Script Include" value="51"/>
+                <element label="GlideRecord Transform Map" value="111"/>
                 <element label="GlideRecord UI Action" value="61"/>
+                <element label="GlideRecord UI Context Menu" value="121"/>
+                <element label="GlideRecord UI Macro" value="131"/>
+                <element label="GlideRecord UI Page" value="141"/>
                 <element label="GlideRecord UI Policy" value="71"/>
+                <element label="GlideRecord UI Script" value="151"/>
+                <element label="GlideRecord Validation Script" value="161"/>
                 <element label="GlideRecord Workflow Script" value="81"/>
+                <element label="Referenced by Table" value="10"/>
                 <element label="Scheduled Job" value="40"/>
+                <element label="Script Action" value="100"/>
                 <element label="Script Include" value="50"/>
-                <element label="Table Reference" value="10"/>
+                <element label="Transform Map" value="110"/>
                 <element label="UI Action" value="60"/>
+                <element label="UI Context Menu" value="120"/>
+                <element label="UI Macro" value="130"/>
+                <element label="UI Page" value="140"/>
                 <element label="UI Policy" value="70"/>
+                <element label="UI Script" value="150"/>
                 <element label="Workflow" value="80"/>
             </choice>
         </element>
