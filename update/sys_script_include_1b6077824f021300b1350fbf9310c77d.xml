@@ -22,19 +22,17 @@ TableAnalyseUtils.prototype = {
 
 		this.clearResultTable();
 
-		this.getReferencedByTables(tablename);
-		this.getReferencingTables(tablename);
-		this.getScriptsWithGlideRecordRef(tablename);
-		this.getScriptsRunningOnTable(tablename);
+		this.processReferencedByTables(tablename);
+		this.processReferencingTables(tablename);
+		this.processScriptsWithGlideRecordRef(tablename);
+		this.processScriptsRunningOnTable(tablename);
+		this.processWorkflowsRunningOnTable(tablename);
+		this.processTablesExtending(tablename);
+		this.processTableExtendedBy(tablename);
 		
-
-		/*new x_178023_technikv2.TableAnalyseUtils().getReferencedByTables(tablename);
-		new x_178023_technikv2.TableAnalyseUtils().getScriptsWithGlideRecordRef(tablename);
-		new x_178023_technikv2.TableAnalyseUtils().getScriptsRunningOnTable(tablename);
-		*/
 	},
 
-	getReferencedByTables: function(tablename){
+	processReferencedByTables: function(tablename){
 		//writes all Tables that have a reference for the table specified in parameter tablename into the 'x_178023_technikv2_result' table
 
 		//ToDo: config table verwenden
@@ -100,7 +98,7 @@ TableAnalyseUtils.prototype = {
 		}
 	},
 
-	getReferencingTables: function(tablename){
+	processReferencingTables: function(tablename){
 		//writes all Tables that have a reference for the table specified in parameter tablename into the 'x_178023_technikv2_result' table
 		var activeChoice = 20; //unknown
 		
@@ -137,7 +135,9 @@ TableAnalyseUtils.prototype = {
 
 	},
 
-	getScriptsRunningOnTable : function(tablename){
+	processScriptsRunningOnTable : function(tablename){
+		//Processes scripts running directly on a table like business rules or client scripts and writes the results to the x_178023_technikv2_result table.
+		//The configuration table 'x_178023_technikv2_configuration_table_analyse' contains the information where this method is supposed to search for scripts
 
 		var config = new GlideRecord('x_178023_technikv2_configuration_table_analyse');
 		config.query();
@@ -167,7 +167,7 @@ TableAnalyseUtils.prototype = {
 						activeChoice = 30; //false
 					}
 					
-					gs.info('activeFlag='+activeFlag+', activeChoice='+activeChoice);
+					//gs.info('activeFlag='+activeFlag+', activeChoice='+activeChoice);
 
 					var results = new GlideRecord('x_178023_technikv2_result');
 					results.addQuery('u_element_sys_id', scripts.sys_id);
@@ -197,7 +197,11 @@ TableAnalyseUtils.prototype = {
 
 	},
 
-	getScriptsWithGlideRecordRef : function(tablename){
+	processScriptsWithGlideRecordRef : function(tablename){
+		//Analyzes for direct GlideRecord and GlideAggregate calls for a table (e.g. var gr = new GlideRecord('task') -> task). Does NOT process dotwalks.
+		//The configuration table 'x_178023_technikv2_configuration_gliderecord_analyse' contains the information where this method is supposed to search for GlideRecord and GlideAggregate calls
+		//The Results are written into the 'x_178023_technikv2_result' table
+		
 		var scriptActiveBool;
 		var scriptActiveChoice;
 		//
@@ -298,7 +302,7 @@ TableAnalyseUtils.prototype = {
 
 	},
 
-	getWorkflowsRunningOnTable : function(tablename){
+	processWorkflowsRunningOnTable : function(tablename){
 		//writes all Workflows that are running on the table specified in parameter tablename into the 'x_178023_technikv2_result' table
 
 
@@ -336,20 +340,75 @@ TableAnalyseUtils.prototype = {
 		}
 
 	},
+	
+	processTablesExtending: function(tablename){
+		//gets the tables extending the table specified in "tablename"
+		//Writes the results to the x_178023_technikv2_result table
+		var ACTIVITY_STATUS_UNKNOWN = 20;
+		
+		
+		var tableSysId = this.getSysIdFromTablename(tablename);
 
+		var grTables = new GlideRecord('sys_db_object');
+		grTables.addQuery('super_class', tableSysId);
+		grTables.query();
+		
+		while(grTables.next()){
+			results = new GlideRecord('x_178023_technikv2_result');
+			results.initialize();
+			results.u_element_sys_id = grTables.sys_id;
+			results.u_element_type = 14; //Extending analyzed Table
+			results.u_link_to_element = '/nav_to.do?uri=%2Fsys_db_object.do%3Fsys_id%3D' + grTables.sys_id;
+			results.u_element_name = grTables.name;
+			results.u_element_active = ACTIVITY_STATUS_UNKNOWN;
+			results.insert();
+		}
+	},
+	
+	processTableExtendedBy: function(tablename){
+		//get the tables extended by the table specified in "tablename"
+		//Writes the result into the x_178023_technikv2_result table
+		var ACTIVITY_STATUS_UNKNOWN = 20;
+		var ELEMENT_TYPE_EXTENDED_BY_ANALYZE_TABLE = 15;
+		
+		var gr = new GlideRecord('sys_db_object');
+		gr.get('name', tablename);
+		
+		if(!gr.super_class.nil()){
+			var grResult = new GlideRecord('x_178023_technikv2_result');
+			
+			grResult.initialize();
+			grResult.u_element_sys_id = gr.super_class.sys_id;
+			grResult.u_element_type = ELEMENT_TYPE_EXTENDED_BY_ANALYZE_TABLE;
+			grResult.u_link_to_element = '/nav_to.do?uri=%2Fsys_db_object.do%3Fsys_id%3D' + gr.super_class.sys_id;
+			grResult.u_element_name = gr.super_class.name;
+			grResult.u_element_active = ACTIVITY_STATUS_UNKNOWN;
+			grResult.insert();
+			
+		}
+	},
+	
+	getSysIdFromTablename: function(tablename){
+		//returns the sys_id of the table specified by 'tablename'
+		var grName2Sys = new GlideRecord('sys_db_object');
+		grName2Sys.get('name', tablename);
+		return grName2Sys.sys_id;
+	},
+	
+	
 	type: 'TableAnalyseUtils'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-05-15 07:09:27</sys_created_on>
         <sys_id>1b6077824f021300b1350fbf9310c77d</sys_id>
-        <sys_mod_count>54</sys_mod_count>
+        <sys_mod_count>71</sys_mod_count>
         <sys_name>TableAnalyseUtils</sys_name>
         <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
         <sys_update_name>sys_script_include_1b6077824f021300b1350fbf9310c77d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-23 13:22:42</sys_updated_on>
+        <sys_updated_on>2018-05-29 09:32:48</sys_updated_on>
     </sys_script_include>
 </record_update>

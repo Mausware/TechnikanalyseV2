@@ -31,7 +31,8 @@
                 <element label="Dotwalk UI Script" value="153"/>
                 <element label="Dotwalk Validation Script" value="163"/>
                 <element label="Dotwalk Workflow Script" value="83"/>
-                <element label="Extending Table" value="14"/>
+                <element label="Extended by analyzed Table" value="15"/>
+                <element label="Extending analyzed Table" value="14"/>
                 <element label="GlideAggregate Access Control (ACL)" value="92"/>
                 <element label="GlideAggregate Business Rule" value="32"/>
                 <element label="GlideAggregate Client Script" value="22"/>

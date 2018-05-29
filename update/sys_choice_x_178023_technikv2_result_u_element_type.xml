@@ -329,7 +329,7 @@
             <element>u_element_type</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Extending Table</label>
+            <label>Extending analyzed Table</label>
             <language>en</language>
             <name>x_178023_technikv2_result</name>
             <sequence/>
@@ -338,9 +338,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>c5d75e4a4ff11300b1350fbf9310c74c</sys_id>
-            <sys_mod_count>1</sys_mod_count>
+            <sys_mod_count>2</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-05-16 14:19:54</sys_updated_on>
+            <sys_updated_on>2018-05-29 08:15:52</sys_updated_on>
             <value>14</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -418,6 +418,25 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-05-23 08:38:30</sys_updated_on>
             <value>143</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Extended by analyzed Table</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 08:16:15</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7e1644ba4f561300b1350fbf9310c7f8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 08:16:15</sys_updated_on>
+            <value>15</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
