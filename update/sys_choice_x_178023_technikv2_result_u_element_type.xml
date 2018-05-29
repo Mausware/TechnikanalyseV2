@@ -595,6 +595,44 @@
             <element>u_element_type</element>
             <hint/>
             <inactive>false</inactive>
+            <label>Event Registration</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 12:47:10</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5b1441b64fd61300b1350fbf9310c75d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 12:47:10</sys_updated_on>
+            <value>180</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Data Policy</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 12:46:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8c0405fa4fd61300b1350fbf9310c7dd</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 12:50:20</sys_updated_on>
+            <value>190</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
             <label>Client Script</label>
             <language>en</language>
             <name>x_178023_technikv2_result</name>
@@ -608,6 +646,44 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-05-02 14:28:27</sys_updated_on>
             <value>20</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord Processor</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 12:58:14</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9996017e4fd61300b1350fbf9310c746</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 12:58:14</sys_updated_on>
+            <value>201</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate Processor</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 12:58:24</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fba6097e4fd61300b1350fbf9310c785</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 12:58:24</sys_updated_on>
+            <value>202</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -633,6 +709,44 @@
             <element>u_element_type</element>
             <hint/>
             <inactive>false</inactive>
+            <label>GlideRecord Script Action</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 13:04:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>bc184d7e4fd61300b1350fbf9310c704</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 13:04:28</sys_updated_on>
+            <value>211</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate Script Action</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 13:02:24</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ee778d7e4fd61300b1350fbf9310c7fa</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 13:02:32</sys_updated_on>
+            <value>212</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
             <label>GlideAggregate Client Script</label>
             <language>en</language>
             <name>x_178023_technikv2_result</name>
@@ -646,6 +760,44 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-05-15 10:03:43</sys_updated_on>
             <value>22</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideRecord UI Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 13:09:24</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0d294dbe4fd61300b1350fbf9310c748</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 13:09:24</sys_updated_on>
+            <value>221</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_element_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GlideAggregate UI Script</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-29 13:09:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>963901fe4fd61300b1350fbf9310c7c5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-29 13:09:40</sys_updated_on>
+            <value>222</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
