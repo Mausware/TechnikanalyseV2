@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Analyzation Request" max_length="40" name="x_178023_technikv2_analyzation_request" type="collection">
+        <element label="Application" max_length="32" name="u_application" reference="sys_app" type="reference"/>
+        <element label="Depth" max_length="40" name="u_depth" type="integer"/>
+        <element dependent="u_table" dependent_on_field="u_table" label="Field" max_length="80" name="u_field" type="field_name" use_dependent_field="true"/>
+        <element display="true" label="Name" mandatory="true" max_length="128" name="u_name" type="string"/>
+        <element label="Table" max_length="80" name="u_table" type="table_name"/>
+        <element choice="1" label="Type" max_length="40" name="u_type" type="choice">
+            <choice>
+                <element hint="Analyze an application" label="Application" value="30"/>
+                <element hint="Analyze a single field on a table" label="Field" value="20"/>
+                <element hint="Analyze a complete table" label="Table" value="10"/>
+            </choice>
+        </element>
+        <element label="Update every night" max_length="40" name="u_update_every_night" type="boolean"/>
+        <index name="index">
+            <element name="u_application"/>
+        </index>
+    </element>
+</database>

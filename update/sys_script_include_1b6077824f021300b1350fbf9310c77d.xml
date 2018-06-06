@@ -18,21 +18,82 @@ TableAnalyseUtils.prototype = {
 		grResult.deleteMultiple();
 	},
 
-	run: function(tablename){
-
-		this.clearResultTable();
-
-		this.processReferencedByTables(tablename);
-		this.processReferencingTables(tablename);
-		this.processScriptsWithGlideRecordRef(tablename);
-		this.processScriptsRunningOnTable(tablename);
-		this.processWorkflowsRunningOnTable(tablename);
-		this.processTablesExtending(tablename);
-		this.processTableExtendedBy(tablename);
+	run: function(tablename, analyzationRequestSysid){
+		//Analyzes the table passed in 'tablename'
 		
+		//this.clearResultTable();
+		var dateBefore = new GlideDateTime();
+
+		this.processReferencedByTables(tablename, analyzationRequestSysid);
+		this.processReferencingTables(tablename, analyzationRequestSysid);
+		this.processScriptsWithGlideRecordRef(tablename, analyzationRequestSysid);
+		this.processScriptsRunningOnTable(tablename, analyzationRequestSysid);
+		this.processWorkflowsRunningOnTable(tablename, analyzationRequestSysid);
+		this.processTablesExtending(tablename, analyzationRequestSysid);
+		this.processTableExtendedBy(tablename, analyzationRequestSysid);
+		
+		var dateAfter = new GlideDateTime();
+		var numericDiff = (dateAfter.getNumericValue()-dateBefore.getNumericValue())/1000;
+		var numericGesamt = numericGesamt + numericDiff;
+		gs.info('Technikanalyse: Durchlaufzeit für Table \"' + tablename + '\": ' + numericDiff + ' Sekunden. Analyse wurde von user ' + gs.getUserName() + ' ausgelöst');
+		
+		//Shoot chat message to user (Nach Vorlage "The Watcher")
+		var recipient = gs.getUserID();
+		var secondaryRecipients = [];
+		var sender = 'e1130dcd4fa21300b1350fbf9310c768'; //userID Technikanalyse User
+		var link = "/nav_to.do?uri=%2Fx_178023_technikv2_result_list.do%3Fsysparm_query%3Du_analyzation_request%253D" + analyzationRequestSysid;
+		var messages =  ['Technikanalyse: Durchlaufzeit für Table \"' + tablename + '\": ' + numericDiff + ' Sekunden.', link];		
+		var groupName = "Technikanalyse Result info";
+		var popUp = true;
+		
+		x_178023_technikv2.GlideLiveFeedEnhancer.createConversation(recipient, secondaryRecipients, sender, messages, groupName, popUp);
+		
+		
+
 	},
 
-	processReferencedByTables: function(tablename){
+	runForApplication: function(applicationSysid, analyzationRequestSysid){
+		//Analyzes all tables of the application passed in "ApplicationSysid"
+		
+		var applicationname;
+		//ToDo: Bisher nur Tabelanalyse. Später Feldanalyse etc. hinzufügen
+		var dateBefore = new GlideDateTime();
+
+		var appTable = new GlideRecord('sys_db_object');
+		appTable.addQuery('sys_scope', applicationSysid);
+		appTable.query();
+
+		while(appTable.next()){
+
+			applicationname = appTable.sys_scope.getDisplayValue();
+			this.processReferencedByTables(appTable.name, analyzationRequestSysid);
+			this.processReferencingTables(appTable.name, analyzationRequestSysid);
+			this.processScriptsWithGlideRecordRef(appTable.name, analyzationRequestSysid);
+			this.processScriptsRunningOnTable(appTable.name, analyzationRequestSysid);
+			this.processWorkflowsRunningOnTable(appTable.name, analyzationRequestSysid);
+			this.processTablesExtending(appTable.name, analyzationRequestSysid);
+			this.processTableExtendedBy(appTable.name, analyzationRequestSysid);
+
+		}
+		
+		var dateAfter = new GlideDateTime();
+		var numericDiff = (dateAfter.getNumericValue()-dateBefore.getNumericValue())/1000;
+		gs.info('Technikanalyse: Durchlaufzeit für Application \"' + applicationname + '\": ' + numericDiff + ' Sekunden');
+		
+		//Shoot chat message to user (Nach Vorlage "The Watcher")
+		var recipient = gs.getUserID();
+		var secondaryRecipients = [];
+		var sender = 'e1130dcd4fa21300b1350fbf9310c768'; //userID Technikanalyse User
+		var link = "/nav_to.do?uri=%2Fx_178023_technikv2_result_list.do%3Fsysparm_query%3Du_analyzation_request%253D" + analyzationRequestSysid;
+		var messages =  ['Technikanalyse: Durchlaufzeit für Application \"' + applicationname + '\": ' + numericDiff + ' Sekunden.', link];		
+		var groupName = "Technikanalyse Result info";
+		var popUp = true;
+		
+		x_178023_technikv2.GlideLiveFeedEnhancer.createConversation(recipient, secondaryRecipients, sender, messages, groupName, popUp);
+
+	},
+
+	processReferencedByTables: function(tablename, analyzationRequestSysid){
 		//writes all Tables that have a reference for the table specified in parameter tablename into the 'x_178023_technikv2_result' table
 
 		//ToDo: config table verwenden
@@ -74,6 +135,7 @@ TableAnalyseUtils.prototype = {
 						var results = new GlideRecord('x_178023_technikv2_result');
 						results.addQuery('u_element_sys_id', gr.sys_id);
 						results.addQuery('u_element_type', 10);
+						results.addQuery('u_analyzation_request', analyzationRequestSysid);
 						results.query();
 
 						if(results.next()){
@@ -90,6 +152,8 @@ TableAnalyseUtils.prototype = {
 							results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
 							results.u_element_name = table2scan;
 							results.u_element_active = activeChoice;
+							results.u_analyzation_request = analyzationRequestSysid;
+							results.u_analyzed_table = tablename;
 							results.insert();
 						}
 					}
@@ -98,10 +162,10 @@ TableAnalyseUtils.prototype = {
 		}
 	},
 
-	processReferencingTables: function(tablename){
+	processReferencingTables: function(tablename, analyzationRequestSysid){
 		//writes all Tables that have a reference for the table specified in parameter tablename into the 'x_178023_technikv2_result' table
 		var activeChoice = 20; //unknown
-		
+
 		var gr = new GlideRecord('sys_dictionary');
 		gr.addQuery('name', tablename);
 		gr.addQuery('internal_type', 'reference');
@@ -109,7 +173,7 @@ TableAnalyseUtils.prototype = {
 
 		while(gr.next()){
 			var results = new GlideRecord('x_178023_technikv2_result');
-			
+
 			var table = new GlideRecord('sys_dictionary');
 			table.addQuery('name', gr.reference);
 			table.query();
@@ -119,8 +183,9 @@ TableAnalyseUtils.prototype = {
 				}else{
 					activeChoice = 30; //false
 				}
-				
+
 			}
+			//ToDo: Auf bestehenden result record prüfen)
 
 			results.initialize();
 			results.u_element_sys_id = gr.sys_id;
@@ -128,6 +193,8 @@ TableAnalyseUtils.prototype = {
 			results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
 			results.u_element_name = table.name;
 			results.u_element_active = activeChoice;
+			results.u_analyzation_request = analyzationRequestSysid;
+			results.u_analyzed_table = tablename;
 			results.insert();
 		}
 
@@ -135,7 +202,7 @@ TableAnalyseUtils.prototype = {
 
 	},
 
-	processScriptsRunningOnTable : function(tablename){
+	processScriptsRunningOnTable : function(tablename, analyzationRequestSysid){
 		//Processes scripts running directly on a table like business rules or client scripts and writes the results to the x_178023_technikv2_result table.
 		//The configuration table 'x_178023_technikv2_configuration_table_analyse' contains the information where this method is supposed to search for scripts
 
@@ -166,12 +233,13 @@ TableAnalyseUtils.prototype = {
 					}if(activeFlag == false){
 						activeChoice = 30; //false
 					}
-					
+
 					//gs.info('activeFlag='+activeFlag+', activeChoice='+activeChoice);
 
 					var results = new GlideRecord('x_178023_technikv2_result');
 					results.addQuery('u_element_sys_id', scripts.sys_id);
 					results.addQuery('u_element_type', elementType);
+					results.addQuery('u_analyzation_request', analyzationRequestSysid);
 					results.query();
 
 					if(results.next()){
@@ -188,6 +256,8 @@ TableAnalyseUtils.prototype = {
 						results.u_link_to_element = urlBase + scripts.sys_id;
 						results.u_element_name = scripts.getValue(namefield);
 						results.u_element_active = activeChoice;
+						results.u_analyzation_request = analyzationRequestSysid;
+						results.u_analyzed_table = tablename;
 						results.insert();
 					}
 
@@ -197,11 +267,11 @@ TableAnalyseUtils.prototype = {
 
 	},
 
-	processScriptsWithGlideRecordRef : function(tablename){
+	processScriptsWithGlideRecordRef : function(tablename, analyzationRequestSysid){
 		//Analyzes for direct GlideRecord and GlideAggregate calls for a table (e.g. var gr = new GlideRecord('task') -> task). Does NOT process dotwalks.
 		//The configuration table 'x_178023_technikv2_configuration_gliderecord_analyse' contains the information where this method is supposed to search for GlideRecord and GlideAggregate calls
 		//The Results are written into the 'x_178023_technikv2_result' table
-		
+
 		var scriptActiveBool;
 		var scriptActiveChoice;
 		//
@@ -275,6 +345,7 @@ TableAnalyseUtils.prototype = {
 						var results = new GlideRecord('x_178023_technikv2_result');
 						results.addQuery('u_element_sys_id', scripts.sys_id);
 						results.addQuery('u_element_type', elementType);
+						results.addQuery('u_analyzation_request', analyzationRequestSysid);
 						results.query();
 
 						if(results.next()){
@@ -290,6 +361,8 @@ TableAnalyseUtils.prototype = {
 							results.u_link_to_element = urlBase + scripts.sys_id;
 							results.u_element_name = scriptName;
 							results.u_element_active = scriptActiveChoice;
+							results.u_analyzation_request = analyzationRequestSysid;
+							results.u_analyzed_table = tablename;
 							results.insert();
 						}
 
@@ -302,7 +375,7 @@ TableAnalyseUtils.prototype = {
 
 	},
 
-	processWorkflowsRunningOnTable : function(tablename){
+	processWorkflowsRunningOnTable : function(tablename, analyzationRequestSysid){
 		//writes all Workflows that are running on the table specified in parameter tablename into the 'x_178023_technikv2_result' table
 
 
@@ -318,6 +391,7 @@ TableAnalyseUtils.prototype = {
 				var results = new GlideRecord('x_178023_technikv2_result');
 				results.addQuery('u_element_sys_id', flows.sys_id);
 				results.addQuery('u_element_type', 80);
+				results.addQuery('u_analyzation_request', analyzationRequestSysid);
 				results.query();
 
 				if(results.next()){
@@ -332,6 +406,8 @@ TableAnalyseUtils.prototype = {
 					results.u_element_type = 80;
 					results.u_link_to_element = '/nav_to.do?uri=%2Fwf_workflow.do%3Fsys_id%3D' + flows.workflow.sys_id;
 					results.u_element_name = flows.workflow.name;
+					results.u_analyzation_request = analyzationRequestSysid;
+					results.u_analyzed_table = tablename;
 					results.insert();
 				}
 
@@ -340,20 +416,22 @@ TableAnalyseUtils.prototype = {
 		}
 
 	},
-	
-	processTablesExtending: function(tablename){
+
+	processTablesExtending: function(tablename, analyzationRequestSysid){
 		//gets the tables extending the table specified in "tablename"
 		//Writes the results to the x_178023_technikv2_result table
 		var ACTIVITY_STATUS_UNKNOWN = 20;
-		
-		
+
+
 		var tableSysId = this.getSysIdFromTablename(tablename);
 
 		var grTables = new GlideRecord('sys_db_object');
 		grTables.addQuery('super_class', tableSysId);
 		grTables.query();
-		
+
 		while(grTables.next()){
+
+			//ToDo: Results auf bestehenden Record prüfen und diesen updaten wenn vorhanden
 			results = new GlideRecord('x_178023_technikv2_result');
 			results.initialize();
 			results.u_element_sys_id = grTables.sys_id;
@@ -361,54 +439,58 @@ TableAnalyseUtils.prototype = {
 			results.u_link_to_element = '/nav_to.do?uri=%2Fsys_db_object.do%3Fsys_id%3D' + grTables.sys_id;
 			results.u_element_name = grTables.name;
 			results.u_element_active = ACTIVITY_STATUS_UNKNOWN;
+			results.u_analyzation_request = analyzationRequestSysid;
+			results.u_analyzed_table = tablename;
 			results.insert();
 		}
 	},
-	
-	processTableExtendedBy: function(tablename){
+
+	processTableExtendedBy: function(tablename, analyzationRequestSysid){
 		//get the tables extended by the table specified in "tablename"
 		//Writes the result into the x_178023_technikv2_result table
 		var ACTIVITY_STATUS_UNKNOWN = 20;
 		var ELEMENT_TYPE_EXTENDED_BY_ANALYZE_TABLE = 15;
-		
+
 		var gr = new GlideRecord('sys_db_object');
 		gr.get('name', tablename);
-		
+
 		if(!gr.super_class.nil()){
 			var grResult = new GlideRecord('x_178023_technikv2_result');
-			
+			//ToDo: Prüfen ob bereits ein Result record existiert, dann diesen updaten statt neuen anzulegen
 			grResult.initialize();
 			grResult.u_element_sys_id = gr.super_class.sys_id;
 			grResult.u_element_type = ELEMENT_TYPE_EXTENDED_BY_ANALYZE_TABLE;
 			grResult.u_link_to_element = '/nav_to.do?uri=%2Fsys_db_object.do%3Fsys_id%3D' + gr.super_class.sys_id;
 			grResult.u_element_name = gr.super_class.name;
 			grResult.u_element_active = ACTIVITY_STATUS_UNKNOWN;
+			grResult.u_analyzation_request = analyzationRequestSysid;
+			grResult.u_analyzed_table = tablename;
 			grResult.insert();
-			
+
 		}
 	},
-	
+
 	getSysIdFromTablename: function(tablename){
 		//returns the sys_id of the table specified by 'tablename'
 		var grName2Sys = new GlideRecord('sys_db_object');
 		grName2Sys.get('name', tablename);
 		return grName2Sys.sys_id;
 	},
-	
-	
+
+
 	type: 'TableAnalyseUtils'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-05-15 07:09:27</sys_created_on>
         <sys_id>1b6077824f021300b1350fbf9310c77d</sys_id>
-        <sys_mod_count>71</sys_mod_count>
+        <sys_mod_count>95</sys_mod_count>
         <sys_name>TableAnalyseUtils</sys_name>
         <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
         <sys_update_name>sys_script_include_1b6077824f021300b1350fbf9310c77d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-29 09:32:48</sys_updated_on>
+        <sys_updated_on>2018-06-05 13:21:28</sys_updated_on>
     </sys_script_include>
 </record_update>

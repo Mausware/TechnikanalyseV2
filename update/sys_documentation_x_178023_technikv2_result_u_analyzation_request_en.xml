@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="u_analyzation_request" label="Analyzation Request" language="en" table="x_178023_technikv2_result">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_analyzation_request</element>
+            <help/>
+            <hint/>
+            <label>Analyzation Request</label>
+            <language>en</language>
+            <name>x_178023_technikv2_result</name>
+            <plural>Analyzation Requests</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-06-05 08:29:50</sys_created_on>
+            <sys_id>425c08cd4f221300b1350fbf9310c7a5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Analyzation Request</sys_name>
+            <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
+            <sys_update_name>sys_documentation_x_178023_technikv2_result_u_analyzation_request_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-06-05 08:29:50</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

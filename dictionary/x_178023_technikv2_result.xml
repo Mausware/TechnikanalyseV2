@@ -2,6 +2,8 @@
 <database>
     <element label="Result" max_length="40" name="x_178023_technikv2_result" type="collection">
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element label="Analyzation Request" max_length="32" name="u_analyzation_request" reference="x_178023_technikv2_analyzation_request" type="reference"/>
+        <element label="Analyzed Table" max_length="80" name="u_analyzed_table" type="table_name"/>
         <element choice="1" label="Element Active" max_length="40" name="u_element_active" type="choice">
             <choice>
                 <element hint="Element is inactive" value="30"/>
@@ -83,5 +85,8 @@
             </choice>
         </element>
         <element label="Link to Element" max_length="1024" name="u_link_to_element" type="url"/>
+        <index name="index">
+            <element name="u_analyzation_request"/>
+        </index>
     </element>
 </database>
