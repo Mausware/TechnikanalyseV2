@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element label="Result" max_length="40" name="x_178023_technikv2_result" type="collection">
+    <element label="Result" max_length="40" name="x_178023_technikv2_result" sizeclass="12255" type="collection">
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element label="Analyzation Request" max_length="32" name="u_analyzation_request" reference="x_178023_technikv2_analyzation_request" type="reference"/>
+        <element label="Analyzed Field" max_length="32" name="u_analyzed_field" reference="sys_dictionary" reference_qual="javascript: &quot;sys_idIN&quot; + new x_178023_technikv2.FieldAnalyseUtils().getReferenceQualifier(current.sys_id);" type="reference" use_reference_qualifier="advanced"/>
         <element label="Analyzed Table" max_length="80" name="u_analyzed_table" type="table_name"/>
         <element choice="1" label="Element Active" max_length="40" name="u_element_active" type="choice">
             <choice>
@@ -37,6 +38,8 @@
                 <element label="Event Registration" value="180"/>
                 <element label="Extended by analyzed Table" value="15"/>
                 <element label="Extending analyzed Table" value="14"/>
+                <element label="Field with Reference" value="16"/>
+                <element label="Field with Reference List" value="17"/>
                 <element label="GlideAggregate Access Control (ACL)" value="92"/>
                 <element label="GlideAggregate Business Rule" value="32"/>
                 <element label="GlideAggregate Client Script" value="22"/>
@@ -71,6 +74,7 @@
                 <element label="GlideRecord Workflow Script" value="81"/>
                 <element label="Referenced by Table" value="10"/>
                 <element label="Referencing Table" value="170"/>
+                <element label="runningOnField Client Script" value="18"/>
                 <element label="Scheduled Job" value="40"/>
                 <element label="Script Action" value="100"/>
                 <element label="Script Include" value="50"/>
@@ -87,6 +91,9 @@
         <element label="Link to Element" max_length="1024" name="u_link_to_element" type="url"/>
         <index name="index">
             <element name="u_analyzation_request"/>
+        </index>
+        <index name="index2">
+            <element name="u_analyzed_field"/>
         </index>
     </element>
 </database>

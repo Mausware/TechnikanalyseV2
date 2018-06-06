@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_178023_technikv2.FieldAnalyseUtils</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>FieldAnalyseUtils</name>
+        <script><![CDATA[var FieldAnalyseUtils = Class.create();
+FieldAnalyseUtils.prototype = {
+	initialize: function() {
+	},
+
+	processReferenceField: function(tablename, fieldname, analyzationRequestSysid){
+		//Analyzes if the table.field passed in the parameters is a reference or a List of references and where it does reference
+		//If the field is a ref or ref list field, it's noted down in the result table
+		
+		var elementType = 0;
+		var gr = new GlideRecord('sys_dictionary');
+		gr.addQuery('name', tablename);
+		gr.addQuery('element', fieldname);
+		gr.addQuery('internal_type', 'reference').addOrCondition('internal_type', 'glide_list');
+		gr.query();
+
+		while(gr.next()){
+			var results = new GlideRecord('x_178023_technikv2_result');
+
+			if(gr.internal_type == 'reference'){
+				//gs.info('it\'s a ref for ' + gr.reference);
+				elementType = 16;
+
+				results.initialize();
+				results.u_element_sys_id = gr.sys_id;
+				results.u_element_type = 999;
+				results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
+				results.u_element_name = gr.name;
+				results.u_element_active = 20;
+				results.u_analyzation_request = analyzationRequestSysid;
+				results.u_analyzed_table = tablename;
+				results.u_analyzed_field = this._getFieldSysId(tablename, fieldname);
+				results.insert();
+
+			}else if(gr.internal_type == 'glide_list'){
+				//gs.info('it\'s a list for ' + gr.reference);
+				elementType = 17;
+
+			}
+
+			results.initialize();
+			results.u_element_sys_id = gr.sys_id;
+			results.u_element_type = elementType;
+			results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
+			results.u_element_name = gr.name;
+			results.u_element_active = 20;
+			results.u_analyzation_request = analyzationRequestSysid;
+			results.u_analyzed_table = tablename;
+			results.u_analyzed_field = this._getFieldSysId(tablename, fieldname);
+			results.insert();
+		}
+	},
+
+	processScriptsRunningOnField: function(tablename, fieldname, analyzationRequestSysid){
+		//Looks up if any onChange or onCellEdit Scripts run directly on the table.field specified in the parameters.
+		//Writes the results to the result table
+		
+		var elementType = 18; //"runningOnField Client Script"
+		
+		var script = new GlideRecord('sys_script_client');
+		script.addQuery('type', 'onChange').addOrCondition('type', 'onCellEdit'); //später encoded query aus config liste verwenden
+		script.addQuery('table', tablename);
+		script.addQuery('field', fieldname);
+		script.query();
+
+		while(script.next()){
+			var results = new GlideRecord('x_178023_technikv2_result');
+
+			results.initialize();
+			results.u_element_sys_id = script.sys_id;
+			results.u_element_type = elementType;
+			results.u_link_to_element = '/nav_to.do?uri=%2Fsys_script_client.do%3Fsys_id%3D' + script.sys_id;
+			results.u_element_name = script.name;
+			results.u_element_active = script.active;
+			results.u_analyzation_request = analyzationRequestSysid;
+			results.u_analyzed_table = tablename;
+			results.u_analyzed_field = this._getFieldSysId(tablename, fieldname);
+			results.insert();
+
+		}
+	},
+
+	getReferenceQualifier: function(sys_id){
+		//Param: sys_id of the current record in "x_178023_technikv2_result" table
+		//Script checks the tablename that is saved in the passed record and collects the sys_ids of all fielddefinitions in sys_dictionary, that belong to the tablename
+		//returns: Array of the sys_ids of all fields of the table specified in the u_analyzed_table field of the current record in the "x_178023_technikv2_result" table
+		
+		
+		var retArray = [];
+
+		var gr = new GlideRecord('x_178023_technikv2_result');
+		gr.get(sys_id);
+
+		var tableName = gr.u_analyzed_table;
+
+		gs.info("MMA: tableName = " + tableName);
+
+		var grTable = new GlideRecord('sys_dictionary');
+		grTable.addQuery('name', tableName);
+		grTable.addQuery('internal_type', '!=', 'collection');
+		grTable.query();
+
+		gs.info('Number of Records in grTable: ' + grTable.getRowCount());
+
+		while(grTable.next()){
+			retArray.push(grTable.getValue('sys_id'));
+		}
+
+		return retArray;
+
+	},
+
+	_getFieldSysId: function(tablename, fieldname){
+		//returns the sys_id of a field definition in the sys_dictionary table
+
+		var gr = new GlideRecord('sys_dictionary');
+		gr.addQuery('name', tablename);
+		gr.addQuery('element', fieldname);
+		gr.query();
+
+		if(gr.next()){
+			return gr.sys_id;
+		}
+
+	},
+
+	type: 'FieldAnalyseUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-06-06 08:59:27</sys_created_on>
+        <sys_id>e6bb51514f2e1300b1350fbf9310c76f</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>FieldAnalyseUtils</sys_name>
+        <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
+        <sys_update_name>sys_script_include_e6bb51514f2e1300b1350fbf9310c76f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-06-06 12:34:04</sys_updated_on>
+    </sys_script_include>
+</record_update>
