@@ -27,24 +27,9 @@ FieldAnalyseUtils.prototype = {
 			var results = new GlideRecord('x_178023_technikv2_result');
 
 			if(gr.internal_type == 'reference'){
-				//gs.info('it\'s a ref for ' + gr.reference);
 				elementType = 16;
-
-				results.initialize();
-				results.u_element_sys_id = gr.sys_id;
-				results.u_element_type = 999;
-				results.u_link_to_element = '/nav_to.do?uri=%2Fsys_dictionary.do%3Fsys_id%3D' + gr.sys_id;
-				results.u_element_name = gr.name;
-				results.u_element_active = 20;
-				results.u_analyzation_request = analyzationRequestSysid;
-				results.u_analyzed_table = tablename;
-				results.u_analyzed_field = this._getFieldSysId(tablename, fieldname);
-				results.insert();
-
 			}else if(gr.internal_type == 'glide_list'){
-				//gs.info('it\'s a list for ' + gr.reference);
 				elementType = 17;
-
 			}
 
 			results.initialize();
@@ -139,13 +124,13 @@ FieldAnalyseUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-06-06 08:59:27</sys_created_on>
         <sys_id>e6bb51514f2e1300b1350fbf9310c76f</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>FieldAnalyseUtils</sys_name>
         <sys_package display_value="TechnikV2" source="x_178023_technikv2">545796c64ff11300b1350fbf9310c744</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="TechnikV2">545796c64ff11300b1350fbf9310c744</sys_scope>
         <sys_update_name>sys_script_include_e6bb51514f2e1300b1350fbf9310c76f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-06-06 12:34:04</sys_updated_on>
+        <sys_updated_on>2018-06-06 12:46:26</sys_updated_on>
     </sys_script_include>
 </record_update>
